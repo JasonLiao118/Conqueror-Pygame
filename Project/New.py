@@ -1,3 +1,8 @@
-import fibo
+from fibo import fib as fibonacci
 
-new = {fibo.fib(1000)}
+new = [fibonacci.fib(1000)]
+
+for x in new:
+    print(x)
+    if x == "1":
+        break
