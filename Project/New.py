@@ -7,6 +7,9 @@ pygame.init()
 # Set up the drawing window
 screen = pygame.display.set_mode([500, 500])
 
+#Title and Icon
+pygame.display.set_caption("Basic Game")
+
 # Run until the user asks to quit
 running = True
 while running:
