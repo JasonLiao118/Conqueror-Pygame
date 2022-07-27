@@ -22,6 +22,7 @@ player_change = 0
 def player(x, y):
     screen.blit(playerImg, (x, y))
 
+
     # Run until the user asks to quit
 running = True
 while running:
@@ -33,6 +34,7 @@ while running:
 
     # Fill the background with white
     screen.fill((255, 255, 255))
+    playerX -= 0.1
 
     player(playerX, playerY)
 
