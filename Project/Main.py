@@ -2,28 +2,21 @@
 
 # Import and initialize the pygame library
 import pygame
+from settings import *
+from level import Level
+
 pygame.init()
 
 # Set up the drawing window
-screen = pygame.display.set_mode([800, 600])
+screen = pygame.display.set_mode([1200, 700])
+level = Level(level_map, screen)
 
 #Title and Icon
 pygame.display.set_caption("Basic Game")
 icon = pygame.image.load('character.png')
 pygame.display.set_icon(icon)
 
-# Player
-playerImg = pygame.image.load('swordsman.png')
-playerX = 170
-playerY = 100
-player_change = 0
-
-
-def player(x, y):
-    screen.blit(playerImg, (x, y))
-
-
-    # Run until the user asks to quit
+# Run until the user asks to quit
 running = True
 while running:
 
@@ -33,13 +26,12 @@ while running:
             running = False
 
     # Fill the background with white
-    screen.fill((255, 255, 255))
-    playerX -= 0.1
+    screen.fill((0, 0, 0))
 
-    player(playerX, playerY)
+    # run
+    level.run()
 
-    # Flip the display
-    pygame.display.flip()
+    pygame.display.update()
 
 # Done! Time to quit.
 pygame.quit()
