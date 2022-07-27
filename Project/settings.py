@@ -1,17 +1,29 @@
-level_map = [
-    '                                           ',
-    '                                           ',
-    '                                           ',
-    '                                           ',
-    '                                           ',
-    '                 P                         ',
-    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-    '                                           ',
-    '                                           ',
-    '                                           ',
-    '                                           ',
-]
+LEVEL_MAP = [
+    '                            ',
+    '                            ',
+    '                            ',
+    '                            ',
+    '   P                        ',
+    'XXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    '                            ',
+    '                            ',
+    '                            ',
+    '                            ',
+    '                            ']
 
-tile_size = 64
-screen_width = 1200
-screen_height = len(level_map) * tile_size
+TILE_SIZE = 64
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+
+# colors
+BG_COLOR = '#060C17'
+PLAYER_COLOR = '#C4F7FF'
+TILE_COLOR = '#94D7F2'
+
+# camera
+CAMERA_BORDERS = {
+    'left': 100,
+    'right': 200,
+    'top': 100,
+    'bottom': 150
+}

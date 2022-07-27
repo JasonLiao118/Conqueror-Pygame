@@ -1,37 +1,26 @@
-# Simple pygame program
-
-# Import and initialize the pygame library
-import pygame
-from settings import *
+import pygame, sys
+from settings import * 
 from level import Level
 
+# Pygame setup
 pygame.init()
+screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+pygame.display.set_caption('Platformer')
+clock = pygame.time.Clock()
 
-# Set up the drawing window
-screen = pygame.display.set_mode([1200, 700])
-level = Level(level_map, screen)
+level = Level()
 
-#Title and Icon
-pygame.display.set_caption("Basic Game")
-icon = pygame.image.load('character.png')
-pygame.display.set_icon(icon)
+while True:
+	# event loop
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+			sys.exit()
+	
+	screen.fill(BG_COLOR)
+	level.run()
+	
 
-# Run until the user asks to quit
-running = True
-while running:
-
-    # Did the user click the window close button?
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    # Fill the background with white
-    screen.fill((0, 0, 0))
-
-    # run
-    level.run()
-
-    pygame.display.update()
-
-# Done! Time to quit.
-pygame.quit()
+	# drawing logic
+	pygame.display.update()
+	clock.tick(60)
