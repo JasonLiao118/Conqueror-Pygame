@@ -20,14 +20,14 @@ class Player(pygame.sprite.Sprite):
     def input(self):
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_d]:
             self.direction.x = 1
-        elif keys[pygame.K_LEFT]:
+        elif keys[pygame.K_a]:
             self.direction.x = -1
         else:
             self.direction.x = 0
 
-        if keys[pygame.K_SPACE] and self.on_floor:
+        if keys[pygame.K_w] and self.on_floor:
             self.direction.y = -self.jump_speed
 
     def horizontal_collisions(self):

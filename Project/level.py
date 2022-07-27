@@ -41,10 +41,6 @@ class CameraGroup(pygame.sprite.Group):
         self.display_surface = pygame.display.get_surface()
         self.offset = pygame.math.Vector2(100, 300)
 
-        # center camera setup
-        # self.half_w = self.display_surface.get_size()[0] // 2
-        # self.half_h = self.display_surface.get_size()[1] // 2
-
         # camera
         cam_left = CAMERA_BORDERS['left']
         cam_top = CAMERA_BORDERS['top']
@@ -57,10 +53,6 @@ class CameraGroup(pygame.sprite.Group):
             cam_left, cam_top, cam_width, cam_height)
 
     def custom_draw(self, player):
-
-        # get the player offset
-        # self.offset.x = player.rect.centerx - self.half_w
-        # self.offset.y = player.rect.centery - self.half_h
 
         # getting the camera position
         if player.rect.left < self.camera_rect.left:
