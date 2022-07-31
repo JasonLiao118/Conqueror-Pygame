@@ -25,7 +25,7 @@ class Player(pygame.sprite.Sprite):
         elif keys[pygame.K_a]:
             self.direction.x = -1
         else:
-            self.direction.x = 0
+            self.direction.x = 0 
 
         if keys[pygame.K_w] and self.on_floor:
             self.direction.y = -self.jump_speed
@@ -62,3 +62,5 @@ class Player(pygame.sprite.Sprite):
         self.horizontal_collisions()
         self.apply_gravity()
         self.vertical_collisions()
+
+#this is a comment upon the code editor and this text here that I am writing does not count. 
