@@ -14,9 +14,9 @@ LEVEL_MAP = [
     'X                          X',
     'X                          X',
     'X                          X',
+    'X                   XXXX   X',
     'X                          X',
-    'X                          X',
-    'X   X                      X',
+    'X   XXXXX                  X',
     'X           P              X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
