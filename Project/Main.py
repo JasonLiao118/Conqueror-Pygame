@@ -5,11 +5,11 @@ from level import Level
 
 # Pygame setup
 pygame.init()
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Platformer')
 clock = pygame.time.Clock()
 
-level = Level()
+level = Level(level_data, screen)
 
 while True:
     # event loop
@@ -18,7 +18,6 @@ while True:
             pygame.quit()
             sys.exit()
 
-    screen.fill(BG_COLOR)
     level.run()
 
     # drawing logic
