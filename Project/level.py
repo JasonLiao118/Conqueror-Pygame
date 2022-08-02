@@ -1,5 +1,6 @@
 import pygame
 from settings import *
+from support import import_csv_layout
 # from tiles import Tile
 # from player import Player
 
@@ -7,6 +8,8 @@ from settings import *
 class Level:
     def __init__(self, level_data, surface):
         self.display_surface = surface
+
+        terrain_layout = import_csv_layout(level_data['terrain'])
 
     def run(self):
         pass
