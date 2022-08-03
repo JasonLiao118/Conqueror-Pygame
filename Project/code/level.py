@@ -18,15 +18,15 @@ class Level:
         self.terrain_sprites = self.create_tile_group(
             terrain_layout, 'terrain')
 
-        # decorations setup
-        decorations_layout = import_csv_layout(level_data['decorations'])
-        self.decorations_sprites = self.create_tile_group(
-            decorations_layout, 'decorations')
-
         # background setup
         background_layout = import_csv_layout(level_data['background'])
         self.background_sprites = self.create_tile_group(
             background_layout, 'background')
+
+        # decorations setup
+        decorations_layout = import_csv_layout(level_data['decorations'])
+        self.decorations_sprites = self.create_tile_group(
+            decorations_layout, 'decorations')
 
     def create_tile_group(self, layout, type):
         sprite_group = pygame.sprite.Group()
@@ -43,16 +43,16 @@ class Level:
                         tile_surface = terrain_tile_list[int(val)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
-                    if type == 'decorations':
-                        decorations_tile_list = import_cut_graphics(
-                            '../graphics/terrain/ProjectUtumno_full.png')
-                        tile_surface = decorations_tile_list[int(val)]
-                        sprite = StaticTile(tile_size, x, y, tile_surface)
-
                     if type == 'background':
                         background_tile_list = import_cut_graphics(
                             '../graphics/terrain/ProjectUtumno_full.png')
                         tile_surface = background_tile_list[int(val)]
+                        sprite = StaticTile(tile_size, x, y, tile_surface)
+
+                    if type == 'decorations':
+                        decorations_tile_list = import_cut_graphics(
+                            '../graphics/terrain/ProjectUtumno_full.png')
+                        tile_surface = decorations_tile_list[int(val)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
                     sprite_group.add(sprite)
@@ -67,13 +67,13 @@ class Level:
         self.terrain_sprites.update(self.world_shift)
         self.terrain_sprites.draw(self.display_surface)
 
-        # decorations
-        self.decorations_sprites.update(self.world_shift)
-        self.decorations_sprites.draw(self.display_surface)
-
         # background
         self.background_sprites.update(self.world_shift)
         self.background_sprites.draw(self.display_surface)
+
+        # decorations
+        self.decorations_sprites.update(self.world_shift)
+        self.decorations_sprites.draw(self.display_surface)
 
 
 # class Level:
