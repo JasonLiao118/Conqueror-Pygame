@@ -1,8 +1,8 @@
 level_0 = {
-    'terrain': '../levels/0/terrain.csv',
-    'player': '../levels/0/player.csv',
-    'enemies': '../levels/0/enemies.csv',
-    'decorations': '../levels/0/decorations.csv',
-    'constraints': '../levels/0/constraints.csv',
-    'background': '../levels/0/background.csv'
+    'terrain': '../levels/0/Level 0_terrain.csv',
+    'player': '../levels/0/Level 0_player.csv',
+    'enemies': '../levels/0/Level 0_enemies.csv',
+    'decorations': '../levels/0/Level 0_decorations.csv',
+    'constraints': '../levels/0/Level 0_constraints.csv',
+    'background': '../levels/0/Level 0_background.csv'
 }
