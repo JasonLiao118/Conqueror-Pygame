@@ -2,6 +2,7 @@ import pygame
 from settings import tile_size
 from support import import_csv_layout, import_cut_graphics
 from tiles import Tile, StaticTile
+from enemy import Enemy
 
 # from player import Player
 
@@ -27,6 +28,10 @@ class Level:
         decorations_layout = import_csv_layout(level_data['decorations'])
         self.decorations_sprites = self.create_tile_group(
             decorations_layout, 'decorations')
+
+        # enemy
+        enemy_layout = import_csv_layout(level_data['enemies'])
+        self.enemy_sprites = self.create_tile_group(enemy_layout, 'enemies')
 
     def create_tile_group(self, layout, type):
         sprite_group = pygame.sprite.Group()
@@ -55,6 +60,12 @@ class Level:
                         tile_surface = decorations_tile_list[int(val)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
+                    if type == 'enemies':
+                        enemies_tile_list = import_cut_graphics(
+                            '../graphics/terrain/ProjectUtumno_full.png')
+                        tile_surface = enemies_tile_list[int(val)]
+                        sprite = StaticTile(tile_size, x, y, tile_surface)
+
                     sprite_group.add(sprite)
 
         return sprite_group
@@ -74,6 +85,10 @@ class Level:
         # decorations
         self.decorations_sprites.update(self.world_shift)
         self.decorations_sprites.draw(self.display_surface)
+
+        # enemy
+        self.enemy_sprites.update(self.world_shift)
+        self.enemy_sprites.draw(self.display_surface)
 
 
 # class Level:
