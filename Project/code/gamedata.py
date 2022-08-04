@@ -4,5 +4,6 @@ level_0 = {
     'enemies': '../levels/0/Level 0_enemies.csv',
     'decorations': '../levels/0/Level 0_decorations.csv',
     'constraints': '../levels/0/Level 0_constraints.csv',
-    'background': '../levels/0/Level 0_background.csv'
+    'background': '../levels/0/Level 0_background.csv',
+    'sword': '../levels/0/Level 0_Sword Goal.csv'
 }
