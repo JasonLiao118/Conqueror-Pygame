@@ -4,8 +4,7 @@ from settings import tile_size
 from support import import_csv_layout, import_cut_graphics
 from tiles import Tile, StaticTile
 from enemy import Enemy
-
-# from player import Player
+from player import Player
 
 
 class Level:
@@ -88,7 +87,7 @@ class Level:
                 x = col_index * tile_size
                 y = row_index * tile_size
                 if val == '0':
-                    print('player goes here')
+                    sprite = Player()
                 if val == '1':
                     sword = pygame.image.load(
                         '../terrain/sword.png').convert_alpha()
