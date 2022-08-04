@@ -1,4 +1,5 @@
 import pygame
+from pyparsing import col
 from settings import tile_size
 from support import import_csv_layout, import_cut_graphics
 from tiles import Tile, StaticTile
@@ -13,6 +14,12 @@ class Level:
         # general setup
         self.display_surface = surface
         self.world_shift = 0
+
+        # player
+        player_layout = import_csv_layout(level_data['player'])
+        self.player = pygame.sprite.GroupSingle()
+        self.goal = pygame.sprite.GroupSingle()
+        self.player_setup(player_layout)
 
         # terrain setup
         terrain_layout = import_csv_layout(level_data['terrain'])
@@ -75,6 +82,19 @@ class Level:
 
         return sprite_group
 
+    def player_setup(self, layout):
+        for row_index, row in enumerate(layout):
+            for col_index, val in enumerate(row):
+                x = col_index * tile_size
+                y = row_index * tile_size
+                if val == '0':
+                    print('player goes here')
+                if val == '1':
+                    sword = pygame.image.load(
+                        '../terrain/sword.png').convert_alpha()
+                    sprite = StaticTile(tile_size, x, y, sword)
+                    self.goal.add(sprite)
+
     def enemy_collision_reverse(self):
         for enemy in self.enemy_sprites.sprites():
             if pygame.sprite.spritecollide(enemy, self.constraint_sprites, False):
@@ -102,7 +122,9 @@ class Level:
         self.enemy_collision_reverse()
         self.enemy_sprites.draw(self.display_surface)
 
-
+        # player sprites
+        self.goal.update(self.world_shift)
+        self.goal.draw(self.display_surface)
 # class Level:
 #     def __init__(self):
 
