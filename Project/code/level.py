@@ -33,6 +33,11 @@ class Level:
         enemy_layout = import_csv_layout(level_data['enemies'])
         self.enemy_sprites = self.create_tile_group(enemy_layout, 'enemies')
 
+        # constraint
+        constraint_layout = import_csv_layout(level_data['constraints'])
+        self.constraint_sprites = self.create_tile_group(
+            constraint_layout, 'constraint')
+
     def create_tile_group(self, layout, type):
         sprite_group = pygame.sprite.Group()
 
@@ -61,14 +66,19 @@ class Level:
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
                     if type == 'enemies':
-                        enemies_tile_list = import_cut_graphics(
-                            '../graphics/terrain/ProjectUtumno_full.png')
-                        tile_surface = enemies_tile_list[int(val)]
-                        sprite = StaticTile(tile_size, x, y, tile_surface)
+                        sprite = Enemy(tile_size, x, y)
+
+                    if type == 'constraint':
+                        sprite = Tile(tile_size, x, y)
 
                     sprite_group.add(sprite)
 
         return sprite_group
+
+    def enemy_collision_reverse(self):
+        for enemy in self.enemy_sprites.sprites():
+            if pygame.sprite.spritecollide(enemy, self.constraint_sprites, False):
+                enemy.reverse()
 
     def run(self):
 
@@ -88,6 +98,8 @@ class Level:
 
         # enemy
         self.enemy_sprites.update(self.world_shift)
+        self.constraint_sprites.update(self.world_shift)
+        self.enemy_collision_reverse()
         self.enemy_sprites.draw(self.display_surface)
 
 
