@@ -7,7 +7,9 @@ from gamedata import level_0
 # Pygame setup
 pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Dungeon')
+pygame.display.set_caption('Conqueror')
+icon = pygame.image.load('../graphics/terrain/sword.png')
+pygame.display.set_icon(icon)
 clock = pygame.time.Clock()
 
 level = Level(level_0, screen)
