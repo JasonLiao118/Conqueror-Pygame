@@ -1,5 +1,4 @@
 from csv import reader
-from email.mime import image
 from settings import tile_size
 import pygame
 from os import walk
