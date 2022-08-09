@@ -13,6 +13,7 @@ class Level:
         # general setup
         self.display_surface = surface
         self.world_shift = 0
+        self.current_x = 0
 
         # player
         player_layout = import_csv_layout(level_data['player'])
