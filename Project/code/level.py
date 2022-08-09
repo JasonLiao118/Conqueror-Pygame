@@ -5,10 +5,20 @@ from tiles import Tile, StaticTile
 from enemy import Enemy
 from player import Player
 from particles import ParticleEffect
+from ui import UI
 
 
 class Level:
     def __init__(self, level_data, surface):
+
+        # player stats
+        self.max_health = 100
+        self.cur_health = 100
+        self.points = 0
+
+        # user interface
+        self.ui = UI(surface)
+        self.ui.show_health(50, 100)
 
         # general setup
         self.display_surface = surface
