@@ -14,7 +14,7 @@ class UI:
         self.points = pygame.image.load('../graphics/character/hp.png')
 
     def show_health(self, current, full):
-        self.display_surface.blit(self.health_bar, (500, 975))
+        self.display_surface.blit(self.health_bar, (500, 500))
 
     def show_points(self, amount):
         pass
