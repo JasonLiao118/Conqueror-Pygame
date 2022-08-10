@@ -164,20 +164,21 @@ class Level:
         if player.on_ceiling and player.direction.y > 0.1:
             player.on_ceiling = False
 
-    # def scroll_y(self):
-    #     player = self.player.sprite
-    #     player_y = player.rect.centery
-    #     direction_y = player.direction.y
+    def scroll_y(self):
+        player = self.player.sprite
+        player_y = player.rect.centery
+        direction_y = player.direction.y
 
-    #     if player_y < screen_height / 4 and direction_y < 0:
-    #         self.world_shift = 8
-    #         player.speed = 0
-    #     elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
-    #         self.world_shift = -8
-    #         player.speed = 0
-    #     else:
-    #         self.world_shift = 0
-    #         player.speed = 8
+        if player_y < screen_height / 4 and direction_y < 0:
+            self.world_shift = 8
+            player.speed = 0
+        elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
+            self.world_shift = -8
+            player.speed = 0
+
+        else:
+            self.world_shift = 0
+            player.speed = 8
 
     def get_player_on_ground(self):
         if self.player.sprite.on_ground:
@@ -227,76 +228,7 @@ class Level:
         self.get_player_on_ground()
         self.vertical_movement_collision()
         self.create_landing_dust()
+        self.scroll_y()
         self.player.draw(self.display_surface)
         self.goal.update(self.world_shift)
         self.goal.draw(self.display_surface)
-
-
-# class Level:
-#     def __init__(self):
-
-#         # level setup
-#         self.display_surface = pygame.display.get_surface()
-
-#         # sprite group setup
-#         self.visible_sprites = CameraGroup()
-#         self.active_sprites = pygame.sprite.Group()
-#         self.collision_sprites = pygame.sprite.Group()
-
-#         self.setup_level()
-
-#     def setup_level(self):
-#         for row_index, row in enumerate(LEVEL_MAP):
-#             for col_index, col in enumerate(row):
-#                 x = col_index * TILE_SIZE
-#                 y = row_index * TILE_SIZE
-#                 if col == 'X':
-#                     Tile((x, y), [self.visible_sprites,
-#                          self.collision_sprites])
-#                 if col == 'P':
-#                     self.player = Player(
-#                         (x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
-
-#     def run(self):
-#         # run the entire game (level)
-#         self.active_sprites.update()
-#         self.visible_sprites.custom_draw(self.player)
-
-
-# class CameraGroup(pygame.sprite.Group):
-#     def __init__(self):
-#         super().__init__()
-#         self.display_surface = pygame.display.get_surface()
-#         self.offset = pygame.math.Vector2(100, 300)
-
-#         # camera
-#         cam_left = CAMERA_BORDERS['left']
-#         cam_top = CAMERA_BORDERS['top']
-#         cam_width = self.display_surface.get_size(
-#         )[0] - (cam_left + CAMERA_BORDERS['right'])
-#         cam_height = self.display_surface.get_size(
-#         )[1] - (cam_top + CAMERA_BORDERS['bottom'])
-
-#         self.camera_rect = pygame.Rect(
-#             cam_left, cam_top, cam_width, cam_height)
-
-#     def custom_draw(self, player):
-
-#         # getting the camera position
-#         if player.rect.left < self.camera_rect.left:
-#             self.camera_rect.left = player.rect.left
-#         if player.rect.right > self.camera_rect.right:
-#             self.camera_rect.right = player.rect.right
-#         if player.rect.top < self.camera_rect.top:
-#             self.camera_rect.top = player.rect.top
-#         if player.rect.bottom > self.camera_rect.bottom:
-#             self.camera_rect.bottom = player.rect.bottom
-
-#         # camera offset
-#         self.offset = pygame.math.Vector2(
-#             self.camera_rect.left - CAMERA_BORDERS['left'],
-#             self.camera_rect.top - CAMERA_BORDERS['top'])
-
-#         for sprite in self.sprites():
-#             offset_pos = sprite.rect.topleft - self.offset
-#             self.display_surface.blit(sprite.image, offset_pos)
