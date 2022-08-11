@@ -66,7 +66,7 @@ class Level:
             for col_index, val in enumerate(row):
                 if val != '-1':
                     x = col_index * tile_size
-                    y = row_index * tile_size
+                    y = (row_index - 192) * tile_size
 
                     if type == 'terrain':
                         terrain_tile_list = import_cut_graphics(
@@ -100,7 +100,7 @@ class Level:
         for row_index, row in enumerate(layout):
             for col_index, val in enumerate(row):
                 x = col_index * tile_size
-                y = row_index * tile_size
+                y = (row_index - 192) * tile_size
                 if val == '0':
                     sprite = Player((x, y), self.display_surface,
                                     self.create_jump_particles)
