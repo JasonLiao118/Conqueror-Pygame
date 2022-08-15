@@ -170,10 +170,10 @@ class Level:
         direction_y = player.direction.y
 
         if player_y < screen_height / 4 and direction_y < 0:
-            self.world_shift = 8
+            self.world_shift = 15
             player.speed = 0
         elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
-            self.world_shift = -8
+            self.world_shift = -15
             player.speed = 0
 
         else:

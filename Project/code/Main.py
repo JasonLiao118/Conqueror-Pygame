@@ -11,11 +11,13 @@ pygame.display.set_caption('Conqueror')
 icon = pygame.image.load('../graphics/terrain/sword.png')
 pygame.display.set_icon(icon)
 clock = pygame.time.Clock()
+bg = pygame.image.load('../graphics/terrain/sword background.jpg')
 
 level = Level(level_0, screen)
 
 while True:
     # event loop
+    screen.blit(bg, (0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
