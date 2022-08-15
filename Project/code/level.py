@@ -169,12 +169,12 @@ class Level:
         player_y = player.rect.centery
         direction_y = player.direction.y
 
-        if player_y < screen_height / 4 and direction_y < 0:
+        if player_y < screen_height / 6 and direction_y < 0:
             self.world_shift = 15
-            player.speed = 0
-        elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
+            player.speed = -7
+        elif player_y > screen_height - (screen_height / 6) and direction_y > 0:
             self.world_shift = -15
-            player.speed = 0
+            player.speed = -7
 
         else:
             self.world_shift = 0
