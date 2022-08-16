@@ -169,15 +169,25 @@ class Level:
         player_y = player.rect.centery
         direction_y = player.direction.y
 
-        if player_y < screen_height / 6 and direction_y < 0:
-            self.world_shift = 15
-            player.speed = -7
-        elif player_y > screen_height - (screen_height / 6) and direction_y > 0:
-            self.world_shift = -15
-            player.speed = -7
-
+        if player_y < screen_height / 3 and direction_y < 0:
+            self.world_shift = 16
+            player.gravity = 2
+            player.jump_speed = -16
+            player.speed = 0
+        elif player_y < screen_height / 6 and direction_y < 0:
+            self.world_shift = 40
+            player.gravity = 3
+            player.jump_speed = -16
+            player.speed = 0
+        elif player_y > screen_height - (screen_height / 3) and direction_y > 0:
+            self.world_shift = -4
+            player.gravity = 0.2
+            player.jump_speed = -8
+            player.speed = 0
         else:
             self.world_shift = 0
+            player.gravity = 0.8
+            player.jump_speed = -16
             player.speed = 8
 
     def get_player_on_ground(self):
