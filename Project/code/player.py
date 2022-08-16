@@ -69,20 +69,6 @@ class Player(pygame.sprite.Sprite):
 
         self.rect = self.image.get_rect(midbottom=self.rect.midbottom)
 
-        # set the rect
-        # if self.on_ground and self.on_right:
-        #     self.rect = self.image.get_rect(bottomright=self.rect.bottomright)
-        # elif self.on_ground and self.on_left:
-        #     self.rect = self.image.get_rect(bottomleft=self.rect.bottomleft)
-        # elif self.on_ground:
-        #     self.rect = self.image.get_rect(midbottom=self.rect.midbottom)
-        # elif self.on_ceiling and self.on_right:
-        #     self.rect = self.image.get_rect(topright=self.rect.topright)
-        # elif self.on_ceiling and self.on_left:
-        #     self.rect = self.image.get_rect(topleft=self.rect.topleft)
-        # elif self.on_ceiling:
-        #     self.rect = self.image.get_rect(midtop=self.rect.midtop)
-
     def run_dust_animation(self):
         if self.status == 'run' and self.on_ground:
             self.dust_frame_index += self.dust_animation_speed
