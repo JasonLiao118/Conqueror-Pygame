@@ -26,7 +26,7 @@ class Player(pygame.sprite.Sprite):
 
         # player status
         self.status = 'idle'
-        self.facing_right = True
+        self.facing_right = False
         self.on_ground = False
         self.on_ceiling = False
         self.on_left = False

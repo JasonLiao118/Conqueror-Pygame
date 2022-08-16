@@ -206,6 +206,18 @@ class Level:
                     self.player.sprite.rect.midbottom - offset, 'land')
                 self.dust_sprite.add(fall_dust_particle)
 
+    # def check_enemy_collisions(self):
+    #     enemy_collisions = pygame.sprite.spritecollide(
+    #         self.player.sprite, self.enemy_sprites, False)
+
+    #     if enemy_collisions:
+    #         for enemy in enemy_collisions:
+    #             enemy_center = enemy.rect.centery
+    #             enemy_top = enemy.rect.top
+    #             player_bottom = self.player.sprite.rect.bottom
+    #             if enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y >= 0:
+    #                 self.player.sprite.respawn()
+
     def run(self):
 
         # run the entire game/level
